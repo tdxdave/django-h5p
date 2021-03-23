@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+{% load static %}
+
+{% block extra_head %}
+{% endblock %}     
+
+{% block body %}
+
+<form class="node-form node-h5p_content-form" enctype="multipart/form-data" action="{% url 'h5p_add_content' %}" method="post" id="h5p-content-node-form" accept-charset="UTF-8">
+        {% csrf_token %}
+        <div><div class="form-item form-type-textfield form-item-title">
+            <label for="edit-title">Title <span class="form-required" title="This field is required.">*</span></label>
+            <input type="text" id="edit-title" name="name" value="" size="60" maxlength="128" class="form-text required" />
+        </div>
+      
+        <div class="form-item form-type-file form-item-files-h5p">
+            <label for="edit-h5p">HTML 5 Package </label>
+            <input type="file" id="edit-h5p" name="h5p_file" size="60" class="form-file" />
+            <div class="description">Select a .h5p file to upload and create interactive content from. You may start with the <a href="http://h5p.org/content-types-and-applications" target="_blank">example files</a> on H5P.org
+            </div>
+        </div>
+        </div>
+        <div class="form-actions form-wrapper" id="edit-actions">
+            <input type="submit" id="edit-submit" name="op" value="Save" class="form-submit" />
+        </div>
+    </form>
+{% endblock %}
