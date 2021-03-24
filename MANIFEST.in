@@ -1,3 +1,3 @@
 include LICENSE
 include README.rst
-recurive-include h5p/templates *
+recursive-include h5p/templates *
