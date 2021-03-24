@@ -1,3 +1,3 @@
 include LICENSE
 include README.rst
-recurive-include django_h5p/templates *
+recurive-include h5p/templates *
