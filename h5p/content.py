@@ -1,3 +1,4 @@
+import glob
 from django.conf import settings
 import tempfile
 import shutil
@@ -71,12 +72,20 @@ def process_library(ld):
                 library.semantics = json.dumps(semantics_json)
         library.save()
         library.json = ld_json
-        library_path = f"{library.machine_name}-{library.major_version}.{library.minor_version}"
-        Path(ld).rename(LIBRARY_DIR / library_path)
-        print(LIBRARY_DIR / library_path)
+        library_path = Path(LIBRARY_DIR / f"{library.machine_name}-{library.major_version}.{library.minor_version}")
+        print(library_path)
+        if not library_path.exists():	  
+            print("COPYING"+ld)
+            print(glob.glob(ld + "/*"))            
+            Path(ld).rename(library_path)
+            print(glob.glob(str(library_path / "*")))
+            print(library_path)
+        else:
+            print(library_path.exists())
     else:
-        print("Process Library="+ld)
-        print(ld_json)
+        #print("Process Library="+ld)
+        #print(ld_json)
+        print("")
     return library
 
 
